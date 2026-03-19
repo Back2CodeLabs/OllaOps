@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    environment:
+      - OLLAMA_NUM_PARALLEL=6
+      - OLLAMA_NUM_THREADS=8
+    volumes:
+      - ollama_data:/root/.ollama
+
+  ollaops-config:
+    build: ./ollama-config
+    container_name: ollaops-config
+    restart: unless-stopped
+    ports:
+      - "11435:3000"
+    environment:
+      - OLLAMA_NUM_PARALLEL=6
+      - OLLAMA_NUM_THREADS=8
+
+volumes:
+  ollama_data:

@@ -1,0 +1,9 @@
+{
+  "name": "ollaops-config",
+  "version": "1.0.0",
+  "description": "OllaOps config service",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
